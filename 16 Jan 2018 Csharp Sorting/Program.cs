@@ -40,7 +40,33 @@ namespace _16_Jan_2018_Csharp_Sorting
             Console.WriteLine("----ASCENDING SORT MERGE BOTTOM UP----");
             BottomUpMergeSort(ref arrNumbers, ref arrWork);
             Console.WriteLine(string.Join(",", arrNumbers));
-            
+
+            Console.WriteLine($"The answer is {GetN()}");
+            Console.WriteLine($"The new answer is {GetTheN()}");
+        }
+
+        static int GetN()
+        {
+            for (int n = 1000; n >= 1; n--)
+            {
+                if (n < 8 * Math.Log(n, 2))
+                {
+                    return n;
+                }
+            }
+            return 0;
+        }
+
+        static int GetTheN()
+        {
+            for (int i = 1; i < 1000; i++)
+            {
+                if (100*i*i < Math.Pow(2,i))
+                {
+                    return i;
+                }
+            }
+            return 0;
         }
 
         private static void Randomize()
