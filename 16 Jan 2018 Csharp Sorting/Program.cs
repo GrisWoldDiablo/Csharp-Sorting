@@ -17,32 +17,44 @@ namespace _16_Jan_2018_Csharp_Sorting
             Randomize();
             Console.WriteLine(string.Join(",", arrNumbers));
             Console.WriteLine("----ASCENDING SORT INSERTION----");
-            insertionSort(ref arrNumbers);
+            insertionSort(arrNumbers);
             Console.WriteLine(string.Join(",", arrNumbers));
 
             Console.WriteLine("----RANDOMIZE----");
             Randomize();
             Console.WriteLine(string.Join(",", arrNumbers));
             Console.WriteLine("----DESCENDING SORT INSERTION----");
-            insertionSortDesc(ref arrNumbers);
+            insertionSortDesc(arrNumbers);
             Console.WriteLine(string.Join(",", arrNumbers));
 
             Console.WriteLine("----RANDOMIZE----");
             Randomize();
             Console.WriteLine(string.Join(",", arrNumbers));
             Console.WriteLine("----ASCENDING SORT MERGE TOP DOWN----");
-            TopDownMergeSort(ref arrNumbers, ref arrWork);
+            TopDownMergeSort( arrNumbers,  arrWork);
             Console.WriteLine(string.Join(",", arrNumbers));
 
             Console.WriteLine("----RANDOMIZE----");
             Randomize();
             Console.WriteLine(string.Join(",", arrNumbers));
             Console.WriteLine("----ASCENDING SORT MERGE BOTTOM UP----");
-            BottomUpMergeSort(ref arrNumbers, ref arrWork);
+            BottomUpMergeSort( arrNumbers,  arrWork);
             Console.WriteLine(string.Join(",", arrNumbers));
 
             Console.WriteLine($"The answer is {GetN()}");
             Console.WriteLine($"The new answer is {GetTheN()}");
+
+            
+        }
+
+        bool[] BinaryAdd(bool[] A, bool[] B)
+        {
+            bool[] result = new bool[A.Length + 1];
+            for (int i = 0; i < length; i++)
+            {
+
+            }
+            return result;
         }
 
         static int GetN()
@@ -57,11 +69,11 @@ namespace _16_Jan_2018_Csharp_Sorting
             return 0;
         }
 
-        static int GetTheN()
+        static float GetTheN()
         {
-            for (int i = 1; i < 1000; i++)
+            for (float i = 1; i < 1000; i = i + 0.01f)
             {
-                if (100*i*i < Math.Pow(2,i))
+                if (100*i*i < Math.Pow(2.0f,i))
                 {
                     return i;
                 }
@@ -77,7 +89,7 @@ namespace _16_Jan_2018_Csharp_Sorting
             }
         }
 
-        static void insertionSort(ref int[] numbers)
+        static void insertionSort(int[] numbers)
         {
             for (int j = 1; j < numbers.Length; j++)
             {
@@ -93,14 +105,12 @@ namespace _16_Jan_2018_Csharp_Sorting
             }
         }
 
-        static void insertionSortDesc(ref int[] numbers)
+        static void insertionSortDesc(int[] numbers)
         {
-            // 1,5,3,4
-            for (int j = numbers.Length - 2; j >= 0; j--)
+            for (int j = numbers.Length - 1; j >= 0; j--)
             {
-                // j = 2
-                int tmp = numbers[j]; // tmp = 3
-                int i = j + 1; // i = 3
+                int tmp = numbers[j];
+                int i = j + 1;
 
                 while (i < numbers.Length && numbers[i] > tmp)
                 {
@@ -113,31 +123,31 @@ namespace _16_Jan_2018_Csharp_Sorting
         }
 
         // Array A[] has the items to sort; array B[] is a work array.
-        static void TopDownMergeSort(ref int[] A, ref int[] B)
+        static void TopDownMergeSort( int[] A,  int[] B)
         {
-            CopyArray(ref A, 0, A.Length, ref B);           // duplicate array A[] into B[]
-            TopDownSplitMerge(ref B, 0, A.Length, ref A);   // sort data from B[] into A[]
+            CopyArray( A, 0, A.Length,  B);           // duplicate array A[] into B[]
+            TopDownSplitMerge( B, 0, A.Length,  A);   // sort data from B[] into A[]
         }
 
         // Sort the given run of array A[] using array B[] as a source.
         // iBegin is inclusive; iEnd is exclusive (A[iEnd] is not in the set).
-        static void TopDownSplitMerge(ref int[] B, int iBegin, int iEnd, ref int[] A)
+        static void TopDownSplitMerge( int[] B, int iBegin, int iEnd,  int[] A)
         {
             if (iEnd - iBegin < 2)                       // if run size == 1
                 return;                                 //   consider it sorted
                                                         // split the run longer than 1 item into halves
             int iMiddle = (iEnd + iBegin) / 2;              // iMiddle = mid point
                                                         // recursively sort both runs from array A[] into B[]
-            TopDownSplitMerge(ref A, iBegin, iMiddle, ref B);  // sort the left  run
-            TopDownSplitMerge(ref A, iMiddle, iEnd, ref B);  // sort the right run
+            TopDownSplitMerge( A, iBegin, iMiddle,  B);  // sort the left  run
+            TopDownSplitMerge( A, iMiddle, iEnd,  B);  // sort the right run
                                                      // merge the resulting runs from array B[] into A[]
-            TopDownMerge(ref B, iBegin, iMiddle, iEnd, ref A);
+            TopDownMerge( B, iBegin, iMiddle, iEnd,  A);
         }
 
         //  Left source half is A[ iBegin:iMiddle-1].
         // Right source half is A[iMiddle:iEnd-1   ].
         // Result is            B[ iBegin:iEnd-1   ].
-        static void TopDownMerge(ref int[] A, int iBegin, int iMiddle, int iEnd, ref int[] B)
+        static void TopDownMerge( int[] A, int iBegin, int iMiddle, int iEnd,  int[] B)
         {
             int i = iBegin, j = iMiddle;
 
@@ -158,14 +168,14 @@ namespace _16_Jan_2018_Csharp_Sorting
             }
         }
 
-        static void CopyArray(ref int[] A, int iBegin, int iEnd, ref int[] B)
+        static void CopyArray( int[] A, int iBegin, int iEnd,  int[] B)
         {
             for (int k = iBegin; k < iEnd; k++)
                 B[k] = A[k];
         }
 
         // array A[] has the items to sort; array B[] is a work array
-        static void BottomUpMergeSort(ref int[] A, ref int[] B)
+        static void BottomUpMergeSort( int[] A,  int[] B)
         {
             // Each 1-element run in A is already "sorted".
             // Make successively longer sorted runs of length 2, 4, 8, 16... until whole array is sorted.
@@ -176,19 +186,19 @@ namespace _16_Jan_2018_Csharp_Sorting
                 {
                     // Merge two runs: A[i:i+width-1] and A[i+width:i+2*width-1] to B[]
                     // or copy A[i:n-1] to B[] ( if(i+width >= n) )
-                    BottomUpMerge(ref A, i, Math.Min(i + width, A.Length), Math.Min(i + 2 * width, A.Length), ref B);
+                    BottomUpMerge( A, i, Math.Min(i + width, A.Length), Math.Min(i + 2 * width, A.Length),  B);
                 }
                 // Now work array B is full of runs of length 2*width.
                 // Copy array B to array A for next iteration.
                 // A more efficient implementation would swap the roles of A and B.
-                CopyArray(ref B, ref A);
+                CopyArray( B,  A);
                 // Now array A is full of runs of length 2*width.
             }
         }
 
         //  Left run is A[iLeft :iRight-1].
         // Right run is A[iRight:iEnd-1  ].
-        static void BottomUpMerge(ref int[] A, int iLeft, int iRight, int iEnd, ref int[] B)
+        static void BottomUpMerge( int[] A, int iLeft, int iRight, int iEnd,  int[] B)
         {
             int i = iLeft, j = iRight;
             // While there are elements in the left or right runs...
@@ -208,7 +218,7 @@ namespace _16_Jan_2018_Csharp_Sorting
             }
         }
 
-        static void CopyArray(ref int[] B, ref int[] A)
+        static void CopyArray( int[] B,  int[] A)
         {
             for (int i = 0; i < A.Length; i++)
                 A[i] = B[i];
