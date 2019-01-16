@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.271
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "16 Jan 2018 Csharp Sorting", "16 Jan 2018 Csharp Sorting\16 Jan 2018 Csharp Sorting.csproj", "{12FBCC5E-9409-473B-9049-42C2C60130BE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{12FBCC5E-9409-473B-9049-42C2C60130BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12FBCC5E-9409-473B-9049-42C2C60130BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12FBCC5E-9409-473B-9049-42C2C60130BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12FBCC5E-9409-473B-9049-42C2C60130BE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {58FB100B-14ED-4818-A60C-B0C814E96EE6}
+	EndGlobalSection
+EndGlobal
