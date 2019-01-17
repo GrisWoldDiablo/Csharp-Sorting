@@ -45,9 +45,16 @@ namespace _16_Jan_2018_Csharp_Sorting
             Console.WriteLine($"The answer is {GetN()}");
             Console.WriteLine($"The new answer is {GetTheN()}");
             
-            bool[] A = { true, true, true };
-            bool[] B = { true, false, true };
-            Console.WriteLine(BinToString(BinaryAdd(A,B)));
+            bool[] A = { true, true, true, false,false };
+            bool[] B = { true, false, false, true, false };
+            Console.WriteLine();
+            Console.WriteLine($" {BinToString(A)}\n" +
+                              $"+\n" +
+                              $" {BinToString(B)}\n" +
+                              $"-------\n" +
+                              $"{BinToString(BinaryAdd(A, B))}");
+            Console.WriteLine();
+
         }
 
         static string BinToString(bool[] v)
