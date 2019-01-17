@@ -45,8 +45,8 @@ namespace _16_Jan_2018_Csharp_Sorting
             Console.WriteLine($"The answer is {GetN()}");
             Console.WriteLine($"The new answer is {GetTheN()}");
             
-            bool[] A = { true, false, true };
-            bool[] B = { false, false, false };
+            bool[] A = { true, true, true };
+            bool[] B = { true, false, true };
             Console.WriteLine(BinToString(BinaryAdd(A,B)));
         }
 
@@ -63,7 +63,6 @@ namespace _16_Jan_2018_Csharp_Sorting
                 else
                 {
                     x = x.Insert(0, "0");
-
                 }
             }
             return x;
@@ -82,6 +81,7 @@ namespace _16_Jan_2018_Csharp_Sorting
                 {
                     if (result[i])
                     {
+                        result[i] = false;
                         result[i + 1] = true;
                     }
                     else
