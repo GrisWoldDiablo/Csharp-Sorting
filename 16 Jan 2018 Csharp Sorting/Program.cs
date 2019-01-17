@@ -11,6 +11,7 @@ namespace _16_Jan_2018_Csharp_Sorting
         static int[] arrNumbers = new int[100];
         static int[] arrWork = new int[100];
         static Random rand = new Random();
+        
         static void Main(string[] args)
         {
             Console.WriteLine("----RANDOMIZE----");
@@ -43,16 +44,51 @@ namespace _16_Jan_2018_Csharp_Sorting
 
             Console.WriteLine($"The answer is {GetN()}");
             Console.WriteLine($"The new answer is {GetTheN()}");
-
             
+            bool[] A = { true, false, true };
+            bool[] B = { false, false, false };
+            Console.WriteLine(BinToString(BinaryAdd(A,B)));
         }
 
-        bool[] BinaryAdd(bool[] A, bool[] B)
+        static string BinToString(bool[] v)
+        {
+            string x = string.Empty;
+            foreach (var item in v)
+            {
+                
+                if (item)
+                {
+                    x = x.Insert(0, "1");
+                }
+                else
+                {
+                    x = x.Insert(0, "0");
+
+                }
+            }
+            return x;
+        }
+
+        static bool[] BinaryAdd(bool[] A, bool[] B)
         {
             bool[] result = new bool[A.Length + 1];
-            for (int i = 0; i < length; i++)
+            for (int i = 0; i < result.Length-1; i++)
             {
-
+                if (A[i] && B[i])
+                {
+                    result[i + 1] = true;
+                }
+                else if (A[i] || B[i])
+                {
+                    if (result[i])
+                    {
+                        result[i + 1] = true;
+                    }
+                    else
+                    {
+                        result[i] = true;
+                    }
+                }
             }
             return result;
         }
