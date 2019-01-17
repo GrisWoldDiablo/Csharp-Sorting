@@ -44,35 +44,74 @@ namespace _16_Jan_2018_Csharp_Sorting
 
             Console.WriteLine($"The answer is {GetN()}");
             Console.WriteLine($"The new answer is {GetTheN()}");
-            
+                        
             bool[] A = { true, true, true, false,false };
             bool[] B = { true, false, false, true, false };
-            Console.WriteLine();
+
             Console.WriteLine($" {BinToString(A)}\n" +
                               $"+\n" +
                               $" {BinToString(B)}\n" +
                               $"-------\n" +
                               $"{BinToString(BinaryAdd(A, B))}");
             Console.WriteLine();
-
+            string numberA;
+            string numberB;
+            do
+            {
+                Console.WriteLine("Enter 2 binary numbers of the same length (including preceding '0')");
+                Console.Write("Number A: ");
+                numberA = Console.ReadLine();
+                Console.Write("Number B: ");
+                numberB = Console.ReadLine();
+            } while (numberA.Length != numberB.Length);
+            Console.WriteLine($" {numberA}\n" +
+                              $"+\n" +
+                              $" {numberB}\n" +
+                              $"{StringDash(numberA.Length + 1)}\n" +
+                              $"{BinToString(BinaryAdd(StringToBin(numberA), StringToBin(numberB)))}");
+            Console.WriteLine();
         }
 
-        static string BinToString(bool[] v)
+        private static object StringDash(int numberOfDashes)
         {
-            string x = string.Empty;
-            foreach (var item in v)
+            string dashes = string.Empty;
+            for (int i = 0; i < numberOfDashes; i++)
+            {
+                dashes += "-";
+            }
+            return dashes;
+        }
+
+        static bool[] StringToBin(string stringToConvert)
+        {
+            bool[] conversion = new bool[stringToConvert.Length];
+            stringToConvert = String.Join("",stringToConvert.Reverse().ToArray());
+            for (int i = 0; i < stringToConvert.Length; i++)
+            {
+                if (stringToConvert[i] == '1')
+                {
+                    conversion[i] = true;
+                }
+            }
+            return conversion;
+        }
+
+        static string BinToString(bool[] boolArray)
+        {
+            string conversion = string.Empty;
+            foreach (var item in boolArray)
             {
                 
                 if (item)
                 {
-                    x = x.Insert(0, "1");
+                    conversion = conversion.Insert(0, "1");
                 }
                 else
                 {
-                    x = x.Insert(0, "0");
+                    conversion = conversion.Insert(0, "0");
                 }
             }
-            return x;
+            return conversion;
         }
 
         static bool[] BinaryAdd(bool[] A, bool[] B)
