@@ -70,6 +70,14 @@ namespace _16_Jan_2018_Csharp_Sorting
                               $"{StringDash(numberA.Length + 1)}\n" +
                               $"{BinToString(BinaryAdd(StringToBin(numberA), StringToBin(numberB)))}");
             Console.WriteLine();
+            int[] a = new int[] { 1, 3, 4, 5 };
+            Console.WriteLine(ReverseArray(a)); 
+        }
+
+        private static string ReverseArray(int[] a)
+        {
+            Array.Reverse(a);
+            return string.Join(",",a);
         }
 
         private static object StringDash(int numberOfDashes)
